@@ -1,0 +1,85 @@
+// Get stage from URL
+const params = new URLSearchParams(window.location.search);
+let stage = parseInt(params.get("stage")) || 0;
+
+const buttonsDiv = document.getElementById("buttons");
+const extraMessage = document.getElementById("extraMessage");
+
+// Function to create a button
+function createButton(text, className, onClick) {
+    const btn = document.createElement("button");
+    btn.innerText = text;
+    btn.className = className;
+    btn.onclick = onClick;
+    return btn;
+}
+
+// YES button action
+function sayYes() {
+    document.body.innerHTML = `
+        <div style="
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            text-align:center;
+            font-family:'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9ecf, #ffc3e6, #ffe0f0);
+        ">
+            <h1 style="color:#ff007f; font-family:'Pacifico', cursive;">
+                🎉 YAYYYYY!!! 💖
+            </h1>
+            <img src="https://media.giphy.com/media/111ebonMs90YLu/giphy.gif"
+                 style="width:250px; border-radius:20px;">
+            <h2 style="color:#ff2e93;">
+                You just made my whole year 🥹💕
+            </h2>
+        </div>
+    `;
+}
+
+// Render buttons depending on stage
+function renderButtons() {
+    buttonsDiv.innerHTML = "";
+    extraMessage.innerHTML = "";
+
+    // Always add YES button
+    buttonsDiv.appendChild(
+        createButton("Yes 💖", "yes-btn", sayYes)
+    );
+
+    if (stage === 0) {
+        buttonsDiv.appendChild(
+            createButton("No 😢", "no-btn", () => {
+                window.location.href = "?stage=1";
+            })
+        );
+    }
+
+    else if (stage === 1) {
+        buttonsDiv.appendChild(
+            createButton("Are you sure? 🥺", "no-btn", () => {
+                window.location.href = "?stage=2";
+            })
+        );
+    }
+
+    else if (stage === 2) {
+        buttonsDiv.appendChild(
+            createButton("Are you 100% sure? 😭", "no-btn", () => {
+                window.location.href = "?stage=3";
+            })
+        );
+    }
+
+    else if (stage === 3) {
+        buttonsDiv.appendChild(
+            createButton("Yes 💕", "yes-btn", sayYes)
+        );
+
+        extraMessage.innerHTML = "Please, please, please be my Valentine 🥺💘";
+    }
+}
+
+renderButtons();

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Be My Valentine 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Cute Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1 class="main-question">
+            💕 Will you be my Valentine? 💕
+        </h1>
+
+        <!-- Cute GIF -->
+        <img class="gif"
+            src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+            alt="Cute love gif">
+
+        <div id="buttons" class="buttons">
+            <!-- Buttons will be inserted by JS -->
+        </div>
+
+        <div id="extraMessage"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
